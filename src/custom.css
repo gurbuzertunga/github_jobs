@@ -1,0 +1,9 @@
+body{
+  max-width: 1800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.searchbar-img{
+  background-image: url(./images/backgroundImg.png);
+}

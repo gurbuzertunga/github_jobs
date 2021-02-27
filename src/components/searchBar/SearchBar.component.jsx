@@ -1,7 +1,11 @@
+import sb_image from "../../images/backgroundImg.png";
+import { BsBriefcase } from "react-icons/all";
+import Input from "../../ui-kits/Input";
+
 export default function SearchBar() {
   return (
-    <div className='bg-red-400 h-64 w-full'>
-      df
+    <div className="searchbar-img w-full relative h-48 flex justify-center items-center">
+      <Input isButton icon={<BsBriefcase/>}/>
     </div>
-  )
+  );
 }
