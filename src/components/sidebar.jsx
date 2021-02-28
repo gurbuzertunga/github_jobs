@@ -7,7 +7,7 @@ export default function Sidebar({ page }) {
   return (
     <>
       {page === "descriptionPage" && (
-        <div className="bg-red-400 px-12 w-2/4 h-screen">
+        <div className="bg-red-400 px-12 w-1/3 h-screen">
           <div className="flex pb-4">
             <IoReturnDownBackOutline />
             <Link to="/">Back to search page</Link>
@@ -20,7 +20,7 @@ export default function Sidebar({ page }) {
         </div>
       )}
       {page === "searchPage" && (
-        <div className="bg-red-400 w-1/4 h-screen">
+        <div className="bg-red-400 w-1/3 h-screen">
           <div className="pl-2 mb-4">
             <input
               type="checkbox"

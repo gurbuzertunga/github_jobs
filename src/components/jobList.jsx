@@ -1,9 +1,17 @@
-import React from 'react'
+import Job from "./job";
+import Pagination from "./pagination";
 
 export default function JobList() {
   return (
-    <div>
-      Job List
+    <div className='flex flex-col flex-1'>
+      <div className="flex-1">
+        <Job />
+        <Job />
+        <Job />
+        <Job />
+        <Job />
+      </div>
+      <Pagination/>
     </div>
-  )
+  );
 }
