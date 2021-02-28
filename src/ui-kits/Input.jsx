@@ -8,7 +8,7 @@ export default function Input({ icon, isButton,placeholder }) {
         placeholder={placeholder}
       />
       {isButton && (
-        <button className="text-white bg-blue-700 py-2 px-12 absolute right-0 mr-12 rounded">
+        <button className="text-white bg-blue-700 py-2 px-12 absolute right-0 mr-2 rounded">
           Search
         </button>
       )}

@@ -20,13 +20,13 @@ export default function Sidebar({ page }) {
         </div>
       )}
       {page === "searchPage" && (
-        <div className="bg-red-400 w-1/3 h-screen">
+        <div className="w-1/3 h-screen">
           <div className="pl-2 mb-4">
             <input
               type="checkbox"
               name="Full time"
               id="full"
-              className="pl-2"
+              className="pl-2 mr-2 w-4 h-4"
             />
             <label htmlFor="full">Full time</label>
           </div>
@@ -37,19 +37,19 @@ export default function Sidebar({ page }) {
           />
           <div className='flex flex-col pl-2'>
             <div className='py-2'>
-              <input type="radio" value="london" name="country" id='london' />
+              <input className='mr-2 w-4 h-4' type="radio" value="london" name="country" id='london' />
               <label htmlFor="london">London</label>
             </div>
             <div className='py-2'>
-              <input type="radio" value="amsterdam" name="country" id='amsterdam' />
+              <input className='mr-2 w-4 h-4' type="radio" value="amsterdam" name="country" id='amsterdam' />
               <label htmlFor="amsterdam">Amsterdam</label>
             </div>
             <div className='py-2'>
-              <input type="radio" value="newyork" name="country" id='newyork' />
+              <input className='mr-2 w-4 h-4' type="radio" value="newyork" name="country" id='newyork' />
               <label htmlFor="newyork">New York</label>
             </div>
             <div className='py-2'>
-              <input type="radio" value="berlin" name="country" id='berlin' />
+              <input className='mr-2 w-4 h-4' type="radio" value="berlin" name="country" id='berlin' />
               <label htmlFor="berlin">Berlin</label>
             </div>
           </div>
