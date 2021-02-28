@@ -1,3 +1,13 @@
+@font-face {
+  font-family: poppins;
+  src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+}
+
+.font-poppins {
+  font-family: poppins, sans-serif;
+  font-size: larger;
+}
+
 body{
   max-width: 1800px;
   width: 100%;

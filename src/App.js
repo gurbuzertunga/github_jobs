@@ -7,7 +7,7 @@ import notFound from "./components/not-found/notFound";
 
 function App() {
   return (
-    <div className='px-24 bg-blue-300'>
+    <div className='px-24'>
       <NavLogo />
       <Switch>
         <Route exact path="/" component={SearchPage} />

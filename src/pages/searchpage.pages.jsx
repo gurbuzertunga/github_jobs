@@ -1,4 +1,4 @@
-import SearchBar from "../components/searchBar/SearchBar.component";
+import SearchBar from "../components/SearchBar.component";
 
 const SearchPage = () => (
   <SearchBar/>
