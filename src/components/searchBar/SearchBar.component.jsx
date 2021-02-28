@@ -1,4 +1,3 @@
-import sb_image from "../../images/backgroundImg.png";
 import { BsBriefcase } from "react-icons/all";
 import Input from "../../ui-kits/Input";
 
