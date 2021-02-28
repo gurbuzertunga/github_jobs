@@ -5,7 +5,7 @@ import Sidebar from "../components/sidebar";
 export default function Description() {
   return (
     <div className="container">
-      <Sidebar />
+      <Sidebar page='descriptionPage'/>
       <JobDescription />
     </div>
   );
