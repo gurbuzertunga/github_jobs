@@ -1,9 +1,9 @@
-import React from 'react'
+import Job from './job';
 
 export default function JobList() {
   return (
     <div>
-      Job List
+      <Job />
     </div>
   )
 }

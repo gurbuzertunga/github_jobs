@@ -7,7 +7,7 @@ import Description from "./pages/description.pages";
 
 function App() {
   return (
-    <div className='px-24'>
+    <div className='px-24 bg-gray-100'>
       <NavLogo />
       <Switch>
         <Route exact path="/" component={SearchPage} />
