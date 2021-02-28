@@ -6,7 +6,7 @@ const SearchPage = () => (
   <>
   <SearchBar/>
   <div className="container flex">
-    <Sidebar/>
+    <Sidebar page='searchPage'/>
     <JobList/>
   </div>
   </>
