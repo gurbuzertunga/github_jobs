@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Description() {
+export default function JobDescription() {
   return (
     <div>
-      jobs
+      Job description
     </div>
   )
 }

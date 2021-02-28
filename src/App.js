@@ -2,12 +2,12 @@ import NavLogo from "./components/header.component";
 import FooterLogo from "./components/footer.component";
 import SearchPage from "./pages/searchpage.pages";
 import { Switch, Route } from "react-router-dom";
-import notFound from "./components/not-found/notFound";
-import Description from "./pages/description/description.pages";
+import notFound from "./components/notFound";
+import Description from "./pages/description.pages";
 
 function App() {
   return (
-    <div className='px-12 bg-blue-300'>
+    <div className='px-24'>
       <NavLogo />
       <Switch>
         <Route exact path="/" component={SearchPage} />
