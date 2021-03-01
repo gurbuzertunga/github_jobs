@@ -1,6 +1,6 @@
 export default function Job() {
   return (
-    <div className="flex p-4 ml-8 mb-4 rounded bg-white shadow-2xl">
+    <div className="flex p-4 mb-4 rounded bg-white shadow-2xl">
       <div className="w-2/12 mr-4">
         <img src="https://remoteok.io/assets/jobs/9f761e0e3fb1bf37b9def0d38fc3e1811614464429.png" alt="logo" className="rounded" />
       </div>

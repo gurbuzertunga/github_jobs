@@ -1,12 +1,11 @@
-import React from "react";
 import JobDescription from "../components/jobDescription";
 import Sidebar from "../components/sidebar";
 
-export default function Description() {
-  return (
-    <div className="container">
-      <Sidebar page='descriptionPage'/>
-      <JobDescription />
-    </div>
-  );
-}
+const Description = () => (
+  <div class="flex">
+    <Sidebar page="descriptionPage" />
+    <JobDescription />
+  </div>
+);
+
+export default Description;

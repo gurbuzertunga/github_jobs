@@ -7,7 +7,7 @@ export default function Sidebar({ page }) {
   return (
     <>
       {page === "descriptionPage" && (
-        <div className="bg-red-400 px-12 w-1/3 h-screen">
+        <aside className="bg-red-500 md:w-1/3 mb-4">
           <div className="flex pb-4">
             <IoReturnDownBackOutline />
             <Link to="/">Back to search page</Link>
@@ -17,10 +17,10 @@ export default function Sidebar({ page }) {
             Please email a copy of your resume and online portfolio to
             shit@shitty.com
           </p>
-        </div>
+        </aside>
       )}
       {page === "searchPage" && (
-        <div className="w-1/3 h-screen">
+        <aside className="md:w-1/3 mb-4">
           <div className="pl-2 mb-4">
             <input
               type="checkbox"
@@ -35,25 +35,49 @@ export default function Sidebar({ page }) {
             icon={<BiWorld />}
             placeholder="City,state zip code or country"
           />
-          <div className='flex flex-col pl-2'>
-            <div className='py-2'>
-              <input className='mr-2 w-4 h-4' type="radio" value="london" name="country" id='london' />
+          <div className="flex flex-col pl-2">
+            <div className="py-2">
+              <input
+                className="mr-2 w-4 h-4"
+                type="radio"
+                value="london"
+                name="country"
+                id="london"
+              />
               <label htmlFor="london">London</label>
             </div>
-            <div className='py-2'>
-              <input className='mr-2 w-4 h-4' type="radio" value="amsterdam" name="country" id='amsterdam' />
+            <div className="py-2">
+              <input
+                className="mr-2 w-4 h-4"
+                type="radio"
+                value="amsterdam"
+                name="country"
+                id="amsterdam"
+              />
               <label htmlFor="amsterdam">Amsterdam</label>
             </div>
-            <div className='py-2'>
-              <input className='mr-2 w-4 h-4' type="radio" value="newyork" name="country" id='newyork' />
+            <div className="py-2">
+              <input
+                className="mr-2 w-4 h-4"
+                type="radio"
+                value="newyork"
+                name="country"
+                id="newyork"
+              />
               <label htmlFor="newyork">New York</label>
             </div>
-            <div className='py-2'>
-              <input className='mr-2 w-4 h-4' type="radio" value="berlin" name="country" id='berlin' />
+            <div className="py-2">
+              <input
+                className="mr-2 w-4 h-4"
+                type="radio"
+                value="berlin"
+                name="country"
+                id="berlin"
+              />
               <label htmlFor="berlin">Berlin</label>
             </div>
           </div>
-        </div>
+        </aside>
       )}
     </>
   );

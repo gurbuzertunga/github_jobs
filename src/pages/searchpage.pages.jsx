@@ -5,7 +5,7 @@ import Sidebar from '../components/sidebar'
 const SearchPage = () => (
   <>
   <SearchBar/>
-  <div className="flex">
+  <div className="flex flex-col md:flex-row">
     <Sidebar page='searchPage'/>
     <JobList/>
   </div>
