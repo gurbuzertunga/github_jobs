@@ -1,6 +1,6 @@
 import React from "react";
 import { AiOutlineClockCircle, BiWorld } from "react-icons/all";
-import Job from "../components/job";
+// import Job from "../components/job";
 
 export default function JobDescription() {
   return (

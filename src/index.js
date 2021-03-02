@@ -5,11 +5,13 @@ import "./custom.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 
-ReactDOM.render(
-  <React.StrictMode>
+const Root =  () => {
+
+  return (
     <BrowserRouter>
-      <App/>
-    </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+      <App />
+    </BrowserRouter>  
+  );
+};
+
+ReactDOM.render(<Root />, document.getElementById("root"));

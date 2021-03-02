@@ -14,7 +14,7 @@ export default function Sidebar({ page }) {
           </div>
           <h3 className="my-4 text-xl font-bold text-blue-800">How to apply</h3>
           <p className="">
-            To apply to this position click on this <a href="#" className="font-bold text-blue-800">link</a>
+            To apply to this position click on this <a href="df" className="font-bold text-blue-800">link</a>
           </p>
         </aside>
       )}

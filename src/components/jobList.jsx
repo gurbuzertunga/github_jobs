@@ -1,5 +1,5 @@
 import Job from "./job";
-import Pagination from "./pagination";
+// import Pagination from "./pagination";
 
 export default function JobList() {
   return (
@@ -11,7 +11,7 @@ export default function JobList() {
         <Job />
         <Job />
       </div>
-      <Pagination/>
+      {/* <Pagination/> */}
     </div>
   );
 }
