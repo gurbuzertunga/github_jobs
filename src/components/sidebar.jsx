@@ -7,15 +7,14 @@ export default function Sidebar({ page }) {
   return (
     <>
       {page === "descriptionPage" && (
-        <aside className="bg-red-500 md:w-1/3 mb-4">
-          <div className="flex pb-4">
+        <aside className="md:w-1/3 mb-4">
+          <div className="flex pb-4 items-center">
             <IoReturnDownBackOutline />
-            <Link to="/">Back to search page</Link>
+            <Link to="/" className="mx-4">Back to search page</Link>
           </div>
-          <h3>How to apply</h3>
+          <h3 className="my-4 text-xl font-bold text-blue-800">How to apply</h3>
           <p className="">
-            Please email a copy of your resume and online portfolio to
-            shit@shitty.com
+            To apply to this position click on this <a href="#" className="font-bold text-blue-800">link</a>
           </p>
         </aside>
       )}
