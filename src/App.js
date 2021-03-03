@@ -5,7 +5,12 @@ import SearchPage from "./pages/searchpage.pages";
 import { Switch, Route } from "react-router-dom";
 import notFound from "./components/notFound";
 import Description from "./pages/description.pages";
-// import axios from "axios";
+import axios from "axios";
+
+// remote links = {
+//   link1 = "https://remoteok.io/api?tags=digital+nomad", THIS WORKS
+//   link2 = "https://remotive.io/api/remote-jobs?category=software-dev",
+// }
 
 export default class App extends Component {
   componentDidMount() {
@@ -15,22 +20,10 @@ export default class App extends Component {
   async fetchData() {
     let response;
     try {
-      // response = await fetch("https://jsonplaceholder.typicode.com/todos/1", {
-      //   method: "HEAD",
-      //   mode: "no-cors",
-      //   headers: {
-      //     "Access-Control-Allow-Origin": "*",
-      //     Accept: "application/json",
-      //     "Content-Type": "application/json",
-      //   },
-      //   withCredentials: true,
-      //   credentials: "same-origin",
-      //   crossdomain: true,
-      // }).then((d) => console.log(d));
-
-      response = await fetch("http://test.jointohire.com:3000/api/v1/freelancer/list?page=1&perPage=10",{
-        mode:'no-cors'
-      }).then((d) => console.log(d));
+      response = await axios.get("https://remotive.io/api/remote-jobs?category=software-dev", {
+         mode: "corse",
+         header: "Access-Control-Allow-Origin"
+        }).then((d) => d).then((data => console.log(data)));
     } catch (error) {
       console.log(error);
     }
