@@ -9,7 +9,8 @@ import axios from "axios";
 
 // remote links = {
 //   link1 = "https://remoteok.io/api?tags=digital+nomad", THIS WORKS
-//   link2 = "https://remotive.io/api/remote-jobs?category=software-dev",
+//   link2 = "https://www.themuse.com/api/public/jobs?page=1," THIS WORKS
+//   link3 = "https://remotive.io/api/remote-jobs?category=software-dev",
 // }
 
 export default class App extends Component {
@@ -20,7 +21,7 @@ export default class App extends Component {
   async fetchData() {
     let response;
     try {
-      response = await axios.get("https://remotive.io/api/remote-jobs?category=software-dev", {
+      response = await axios.get("https://www.themuse.com/api/public/jobs?page=1", {
          mode: "corse",
          header: "Access-Control-Allow-Origin"
         }).then((d) => d).then((data => console.log(data)));
