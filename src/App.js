@@ -23,12 +23,49 @@ export default class App extends Component {
   }
 
   async fetchData() {
+    const dataToSubmit=[]
     try {
-        const promise1 = await axios.get("https://limitless-harbor-63035.herokuapp.com/https://www.themuse.com/api/public/jobs?page=1")
-        const promise2 = await axios.get("https://limitless-harbor-63035.herokuapp.com/https://remoteok.io/api")
-        const promise3 = await axios.get("https://limitless-harbor-63035.herokuapp.com/https://jobs.github.com/positions.json?search=node")
-    const d =Promise.all([promise1, promise2, promise3]).then((values) =>values.data;
+        const promise1 = await axios.get("https://limitless-harbor-63035.herokuapp.com/https://remoteok.io/api")
+        const promise2 = await axios.get("https://limitless-harbor-63035.herokuapp.com/https://jobs.github.com/positions.json?search=node")
+        Promise.all([promise1, promise2]).then(values =>{
+          values.forEach(value=>{
 
+            dataToSubmit.push(value.data)
+          })
+          
+          
+          const result = [];
+         result.push(dataToSubmit[0].map(el=>{
+            return {
+              name:el.company || 'Opportunity',
+              position:el.position,
+              logo:el.company_logo || 'logo',
+              date:el.date,
+              description:el.description || `This company hasn't provided description`,
+              location:el.location || 'Remote',
+              url:el.apply_url
+            }
+          }).filter(el=>el.position));
+
+          result.push( dataToSubmit[1].map(el=>{
+              return {
+                name:el.company || 'Opportunity',
+                position:el.title,
+                logo:el.company_logo || 'logo',
+                date:el.created_at,
+                description:el.description || `This company hasn't provided description`,
+                location:el.location || 'Remote',
+                url:el.url
+              }
+            }).filter(el=>el.position)
+          )
+
+          this.setState({
+            jobs:[...result[0],...result[1]]
+          },()=>console.log(this.state))
+        })
+
+        
     } catch (error) {
       console.log(error);
     }
