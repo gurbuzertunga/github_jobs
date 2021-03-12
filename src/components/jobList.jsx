@@ -1,20 +1,32 @@
 import Job from "./job";
+import {withRouter} from 'react-router-dom'
 // import Pagination from "./pagination";
-export default function JobList({ jobs }) {
+function JobList({ jobs ,match,history}) {
 
-  const handleJob = (job2,i) => {
-    jobs && jobs.map((job, i) => {
-    const key = i;
-    const job = job;
-  });
+  
 
-  };
+  jobs =
+    jobs &&
+    jobs.slice(0, 20).map((element, i) => {
+      return element;
+    });
+
+
+    const handleClick = (e) =>{
+      console.log(match);
+      console.log(history);
+      history.push(`${match}${1}`);
+    }
+    
+
   return (
-    <div className='flex flex-col flex-1'>
+    <div className="flex flex-col flex-1">
       <div className="flex-1 md:ml-8">
-            <Job key={handleJob(i)} data={handleJob(job2)} />
+        {jobs && jobs.map((job, i) => <Job key={i} data={job} handleClick={handleClick}/>)}
       </div>
-      {/* <Pagination/> */}
     </div>
-  )
+  );
 }
+
+
+export default withRouter(JobList)
