@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom'
 function JobList({ jobs ,match,history}) {
 
   
-
+  console.log(jobs);
   jobs =
     jobs &&
     jobs.slice(0, 20).map((element, i) => {
@@ -13,9 +13,10 @@ function JobList({ jobs ,match,history}) {
 
 
     const handleClick = (e) =>{
+      console.log(e.target);
       console.log(match);
       console.log(history);
-      history.push(`${match}${1}`);
+      history.push(`description/${jobs.indexOf(e.target)}`);
     }
     
 

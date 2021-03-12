@@ -25,9 +25,11 @@ export default class App extends Component {
       );
       Promise.all([promise1, promise2]).then((values) => {
         values.forEach((value) => {
+          console.log(value.data);
           dataToSubmit.push(value.data);
         });
 
+        const webDevList = ['Frontend', 'Backend', 'Fullstack', ]
         const result = [];
         result.push(
           dataToSubmit[0]
@@ -50,7 +52,7 @@ export default class App extends Component {
           dataToSubmit[1]
             .map((el) => {
               return {
-                name: el.company || "Opportunity",
+                name: el.company || "Job Opportunity",
                 position: el.title,
                 logo: el.company_logo || "https://www.logodesign.net/logo/abstract-cuboid-building-4519ld.png",
                 date: el.created_at,
