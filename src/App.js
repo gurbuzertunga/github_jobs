@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import NavLogo from "./components/header.component";
 import FooterLogo from "./components/footer.component";
 import SearchPage from "./pages/searchpage.pages";
@@ -10,37 +10,35 @@ import axios from "axios";
 // remote links = {
 //   link1 = "https://remoteok.io/api?tags=digital+nomad", THIS WORKS
 //   link2 = "https://www.themuse.com/api/public/jobs?page=1," THIS WORKS
-//   link3 = "https://remotive.io/api/remote-jobs?category=software-dev",
+//   link3 = "https://limitless-harbor-63035.herokuapp.com/https://jobs.github.com/positions.json?search=node", THIS WORKS
+//   lin4 = ""
 // }
 
-export default class App extends Component {
-  componentDidMount() {
+const data = [{}, {}, {}];
+
+
+
+export default function App {
+  const componentDidMount = () => {
     this.fetchData();
   }
 
   async fetchData() {
+    const [state, setState] = useState(data);
     let response;
     try {
-
-     
-
-        // const promise1 = await axios.get("https://www.themuse.com/api/public/jobs?page=1")
-        // const promise2 = await axios.get("https://remoteok.io/api?tags=digital+nomad")
-        const promise3 = await axios.get("https://jobs.github.com/positions.json?search=node",{mode: 'cors'})
-
-        
-
-        Promise.all([promise3]).then((values) => {
-          console.log(values);
+        const promise1 = await axios.get("https://limitless-harbor-63035.herokuapp.com/https://www.themuse.com/api/public/jobs?page=1")
+        const promise2 = await axios.get("https://limitless-harbor-63035.herokuapp.com/https://remoteok.io/api")
+        const promise3 = await axios.get("https://limitless-harbor-63035.herokuapp.com/https://jobs.github.com/positions.json?search=node")
+        Promise.all([promise1, promise2, promise3]).then((values) => {
+          setState(values);
+          console.log(state);
         });
-
-      // response = await axios.get("https://www.themuse.com/api/public/jobs?page=1", {
-      //    mode: "corse",
-      //    header: "Access-Control-Allow-Origin"
-      //   }).then((d) => d).then((data => console.log(data)));
     } catch (error) {
       console.log(error);
     }
+
+  
   }
 
   render() {
