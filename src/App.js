@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import NavLogo from "./components/header.component";
 import FooterLogo from "./components/footer.component";
 import SearchPage from "./pages/searchpage.pages";
@@ -14,31 +14,26 @@ import axios from "axios";
 //   lin4 = ""
 // }
 
-const data = [{}, {}, {}];
+export default class App extends Component {
+  state = {};  
 
-
-
-export default function App {
-  const componentDidMount = () => {
+  componentDidMount() {
     this.fetchData();
+    // console.log(this.state);
   }
 
   async fetchData() {
-    const [state, setState] = useState(data);
-    let response;
     try {
         const promise1 = await axios.get("https://limitless-harbor-63035.herokuapp.com/https://www.themuse.com/api/public/jobs?page=1")
         const promise2 = await axios.get("https://limitless-harbor-63035.herokuapp.com/https://remoteok.io/api")
         const promise3 = await axios.get("https://limitless-harbor-63035.herokuapp.com/https://jobs.github.com/positions.json?search=node")
-        Promise.all([promise1, promise2, promise3]).then((values) => {
-          setState(values);
-          console.log(state);
+    Promise.all([promise1, promise2, promise3]).then((values) => {
+          const dataObj = values.map(value => console.log(value.data));
+          // this.setState({...values}, () => console.log(this.state));
         });
     } catch (error) {
       console.log(error);
     }
-
-  
   }
 
   render() {
