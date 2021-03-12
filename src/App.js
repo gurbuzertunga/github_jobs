@@ -19,7 +19,6 @@ export default class App extends Component {
 
   componentDidMount() {
     this.fetchData();
-    // console.log(this.state);
   }
 
   async fetchData() {
@@ -62,7 +61,7 @@ export default class App extends Component {
 
           this.setState({
             jobs:[...result[0],...result[1]]
-          },()=>console.log(this.state))
+          })
         })
 
         
@@ -76,7 +75,7 @@ export default class App extends Component {
       <div className="px-24">
         <NavLogo />
         <Switch>
-          <Route exact path="/" component={SearchPage} />
+          <Route exact path="/" component={SearchPage} jobs={this.state.jobs}/>
           <Route exact path="/description/:id" component={Description} />
           <Route exact path="/description/:id" component={Description} />
           <Route component={notFound} />

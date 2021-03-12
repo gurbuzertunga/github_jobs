@@ -3,7 +3,6 @@ import Input from "../ui-kits/Input";
 import { BiWorld, IoReturnDownBackOutline } from "react-icons/all";
 
 export default function Sidebar({ page }) {
-  console.log(page);
   return (
     <>
       {page === "descriptionPage" && (

@@ -1,4 +1,7 @@
-export default function Job() {
+import React, { useState } from 'react';
+
+export default function Job({data}) {
+  console.log(data)
   return (
     <div className="flex p-4 mb-4 rounded bg-white shadow-2xl">
       <div className="w-2/12 mr-4">
