@@ -27,10 +27,8 @@ export default class App extends Component {
         const promise1 = await axios.get("https://limitless-harbor-63035.herokuapp.com/https://www.themuse.com/api/public/jobs?page=1")
         const promise2 = await axios.get("https://limitless-harbor-63035.herokuapp.com/https://remoteok.io/api")
         const promise3 = await axios.get("https://limitless-harbor-63035.herokuapp.com/https://jobs.github.com/positions.json?search=node")
-    Promise.all([promise1, promise2, promise3]).then((values) => {
-          const dataObj = values.map(value => console.log(value.data));
-          // this.setState({...values}, () => console.log(this.state));
-        });
+    const d =Promise.all([promise1, promise2, promise3]).then((values) =>values.data;
+
     } catch (error) {
       console.log(error);
     }
