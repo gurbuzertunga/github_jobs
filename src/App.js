@@ -25,17 +25,18 @@ export default class App extends Component {
       );
       Promise.all([promise1, promise2]).then((values) => {
         values.forEach((value) => {
-          console.log(value.data);
           dataToSubmit.push(value.data);
         });
 
-        const webDevList = ['Frontend', 'Backend', 'Fullstack', ]
+        const noShowList = ['IOS', 'Android', 'DevOps', 'Data', 'Recruiter', 'Marketer', 'C++', 'Mobile App', 'Mobile Developer', 'Content Writer'  ];
+       
+
         const result = [];
         result.push(
           dataToSubmit[0]
             .map((el) => {
               return {
-                name: el.company || "Opportunity",
+                name: el.company || "Job Opportunity",
                 position: el.position,
                 logo: el.company_logo || "https://www.logodesign.net/logo/abstract-cuboid-building-4519ld.png",
                 date: el.date,
@@ -47,6 +48,7 @@ export default class App extends Component {
             })
             .filter((el) => el.position)
         );
+       
 
         result.push(
           dataToSubmit[1]
@@ -62,12 +64,33 @@ export default class App extends Component {
                 url: el.url,
               };
             })
-            .filter((el) => el.position)
+            .filter((el) => el.position )
         );
 
+        const jobPosts = [...result[0], ...result[1]];
+       
+
+
+        // jobPosts.forEach(job=>{
+        //   job.position.toLowerCase().split(' ').forEach((e) => e ? noShowList.forEach(d) => e === d)
+        //   job.reduce((acc,cur)=>{
+        // })
+
+        let d = jobPosts.reduce((acc,cur)=>{
+           let a = cur.position.toLowerCase().split(' ').find(el=>noShowList.includes(el))
+          console.log(a);
+        },[])
+
+        console.log(d);
+        // jobPosts.filter(s => {
+        //   const matches = noShowList.forEach((e) => s.position.includes(e));
+        //   console.log(matches);
+        // });
+        
         this.setState({
           jobs: [...result[0], ...result[1]],
         });
+
       });
     } catch (error) {
       console.log(error);

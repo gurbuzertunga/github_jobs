@@ -2,9 +2,6 @@ import Job from "./job";
 import {withRouter} from 'react-router-dom'
 // import Pagination from "./pagination";
 function JobList({ jobs ,match,history}) {
-
-  
-  console.log(jobs);
   jobs =
     jobs &&
     jobs.slice(0, 20).map((element, i) => {
