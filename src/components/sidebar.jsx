@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Input from "../ui-kits/Input";
 import { BiWorld, IoReturnDownBackOutline } from "react-icons/all";
 
-export default function Sidebar({ page }) {
+export default function Sidebar({ page, url }) {
   return (
     <>
       {page === "descriptionPage" && (
@@ -13,7 +13,7 @@ export default function Sidebar({ page }) {
           </div>
           <h3 className="my-4 text-xl font-bold text-blue-800">How to apply</h3>
           <p className="">
-            To apply to this position click on this <a href="df" className="font-bold text-blue-800">link</a>
+            To apply to this position click on this <a href={url} target="blank" className="font-bold text-blue-800">here</a>
           </p>
         </aside>
       )}

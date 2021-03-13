@@ -2,32 +2,33 @@ import React from "react";
 import { AiOutlineClockCircle, BiWorld } from "react-icons/all";
 // import Job from "../components/job";
 
-export default function JobDescription() {
+export default function JobDescription({data}) {
+  console.log(data);
   return (
     <div className="flex-1 md:ml-8 border-gray-800 border">
       <div className="flex items-center">
         <h1 className="text-indigo-900 mr-4  text-xl font-bold">
-          Front-End Software Engineer
+          {data.position}
         </h1>
-        <span className="border border-gray-800 p-1 text-sm">Full Time</span>
+        
       </div>
       <div className='flex items-center ml-2 text-gray-500'>
         <AiOutlineClockCircle />
-        <p className="ml-2">5 days ago</p>
+        <p className="ml-2">{data.date}</p>
       </div>
       <div>
         <img
-          src="https://remoteok.io/assets/jobs/9f761e0e3fb1bf37b9def0d38fc3e1811614464429.png"
+          src={data.logo}
           alt="logo"
           className="rounded w-12"
         />
         <div>
-          <h2 className="font-roboto text-xs font-bold">Volt Agency LLC</h2>
+          <h2 className="font-roboto text-xs font-bold">{data.name}</h2>
           <BiWorld />
-          <p>New York</p>
+          <p>{data.location}</p>
         </div>
       </div>
-      <h3>Humanizing Digital Experiences@ </h3>
+      <h3>{data.description}</h3>
     </div>
   );
 }

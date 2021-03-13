@@ -1,7 +1,7 @@
 import Job from "./job";
-import {withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom';
 // import Pagination from "./pagination";
-function JobList({ jobs ,match,history}) {
+function JobList({ jobs ,match,history, location}) {
   jobs =
     jobs &&
     jobs.slice(0, 20).map((element, i) => {
@@ -9,18 +9,16 @@ function JobList({ jobs ,match,history}) {
     });
 
 
-    const handleClick = (e) =>{
-      console.log(e.target);
-      console.log(match);
+    const handleClick = (e,job) =>{
+      history.push(`description/${e}`, job);
       console.log(history);
-      history.push(`description/${jobs.indexOf(e.target)}`);
     }
     
 
   return (
     <div className="flex flex-col flex-1">
       <div className="flex-1 md:ml-8">
-        {jobs && jobs.map((job, i) => <Job key={i} data={job} handleClick={handleClick}/>)}
+        {jobs && jobs.map((job, i) => <Job key={i} pageNumber={i} data={job} handleClick={ () =>handleClick(i,job)}/>)}
       </div>
     </div>
   );
