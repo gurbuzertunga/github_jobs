@@ -3,7 +3,13 @@ import { AiOutlineClockCircle, BiWorld } from "react-icons/all";
 // import Job from "../components/job";
 
 export default function JobDescription({data}) {
-  console.log(data);
+
+
+  function createMarkup(data) {
+    return {__html: data.description};
+  }
+
+
   return (
     <div className="flex-1 md:ml-8 border-gray-800 border">
       <div className="flex items-center">
@@ -28,7 +34,7 @@ export default function JobDescription({data}) {
           <p>{data.location}</p>
         </div>
       </div>
-      <h3>{data.description}</h3>
+      <div dangerouslySetInnerHTML={{__html: data.description}}></div>
     </div>
   );
 }
