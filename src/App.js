@@ -28,9 +28,6 @@ export default class App extends Component {
           dataToSubmit.push(value.data);
         });
 
-        const noShowList = ['IOS', 'Android', 'DevOps', 'Data', 'Recruiter', 'Marketer', 'C++', 'Mobile App', 'Mobile Developer', 'Content Writer'  ];
-       
-
         const result = [];
         result.push(
           dataToSubmit[0]
@@ -38,7 +35,9 @@ export default class App extends Component {
               return {
                 name: el.company || "Job Opportunity",
                 position: el.position,
-                logo: el.company_logo || "https://www.logodesign.net/logo/abstract-cuboid-building-4519ld.png",
+                logo:
+                  el.company_logo ||
+                  "https://www.logodesign.net/logo/abstract-cuboid-building-4519ld.png",
                 date: el.date,
                 description:
                   el.description || `This company hasn't provided description`,
@@ -48,7 +47,6 @@ export default class App extends Component {
             })
             .filter((el) => el.position)
         );
-       
 
         result.push(
           dataToSubmit[1]
@@ -56,7 +54,9 @@ export default class App extends Component {
               return {
                 name: el.company || "Job Opportunity",
                 position: el.title,
-                logo: el.company_logo || "https://www.logodesign.net/logo/abstract-cuboid-building-4519ld.png",
+                logo:
+                  el.company_logo ||
+                  "https://www.logodesign.net/logo/abstract-cuboid-building-4519ld.png",
                 date: el.created_at,
                 description:
                   el.description || `This company hasn't provided description`,
@@ -64,33 +64,44 @@ export default class App extends Component {
                 url: el.url,
               };
             })
-            .filter((el) => el.position )
+            .filter((el) => el.position)
         );
 
         const jobPosts = [...result[0], ...result[1]];
-       
 
+        const noShowList = [
+          "ios",
+          "android",
+          "devOps",
+          "Data",
+          "Recruiter",
+          "Marketer",
+          "C++",
+          "Mobile App",
+          "Mobile Developer",
+          "Content Writer",
+        ].map((el) => el.toLowerCase());
 
-        // jobPosts.forEach(job=>{
-        //   job.position.toLowerCase().split(' ').forEach((e) => e ? noShowList.forEach(d) => e === d)
-        //   job.reduce((acc,cur)=>{
-        // })
+        let elementIsNotIncluded = true;
 
-        let d = jobPosts.reduce((acc,cur)=>{
-           let a = cur.position.toLowerCase().split(' ').find(el=>noShowList.includes(el))
-          console.log(a);
-        },[])
+        let d = jobPosts.filter(cur => {
+
+          elementIsNotIncluded = true;
+
+          cur.position.toLowerCase().split(" ").forEach((el) => {
+            if (noShowList.includes(el)) {
+              elementIsNotIncluded = false;
+            }
+          });
+
+          if (elementIsNotIncluded) return cur;
+        });
 
         console.log(d);
-        // jobPosts.filter(s => {
-        //   const matches = noShowList.forEach((e) => s.position.includes(e));
-        //   console.log(matches);
-        // });
-        
+
         this.setState({
           jobs: [...result[0], ...result[1]],
         });
-
       });
     } catch (error) {
       console.log(error);
