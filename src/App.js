@@ -121,7 +121,7 @@ export default class App extends Component {
     const result = this.state.jobs.filter((job) => {
       let pos = job.position.split(" ").join("").toLowerCase();
 
-      if (pos.includes(fullMatch) || pos.includes()) {
+      if (pos.includes(fullMatch)) {
         return job;
       } else {
         remaining.push(job);
@@ -138,7 +138,7 @@ export default class App extends Component {
         if (shouldSkip) {
           return;
         }
-        if (pos.includes(el)) {
+        if (pos.includes(el.toLowerCase())) {
           result.push(job);
           shouldSkip = true;
           return;
