@@ -128,8 +128,6 @@ export default class App extends Component {
       }
     });
 
-    console.log(result);
-
     remaining.forEach((job) => {
       let shouldSkip = false;
       let pos = job.position.split(" ").join("").toLowerCase();
@@ -145,8 +143,9 @@ export default class App extends Component {
         }
       });
     });
-
-    console.log(result);
+    this.setState({
+      filteredJobs: result,
+    })
   };
 
   render() {
