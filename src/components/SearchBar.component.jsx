@@ -15,7 +15,6 @@ class SearchBar extends Component {
     this.setState({
       inputText: e.target.value,
     })
-    console.log(e.target.value);
   }
   
   render() {

@@ -8,7 +8,10 @@ import Description from "./pages/description.pages";
 import axios from "axios";
 
 export default class App extends Component {
-  state = {};
+  state = {
+    jobs: [],
+    filteredJobs: [],
+  };
 
   componentDidMount() {
     this.fetchData();
@@ -81,30 +84,23 @@ export default class App extends Component {
           "Mobile Developer",
           "Content Writer",
         ].map((el) => el.toLowerCase());
-        
-        const positions = [
-          "react",
-          "fullstack",
-        ].map((el) => el.toLocaleLowerCase());
 
         let elementIsNotIncluded = true;
 
-        let allJobs = jobPosts.filter(cur => {
-
+        let allJobs = jobPosts.filter((cur) => {
           elementIsNotIncluded = true;
 
-          cur.position.toLowerCase().split(" ").forEach((el) => {
-            if (noShowList.includes(el)) {
-              elementIsNotIncluded = false;
-            }
-          });
+          cur.position
+            .toLowerCase()
+            .split(" ")
+            .forEach((el) => {
+              if (noShowList.includes(el)) {
+                elementIsNotIncluded = false;
+              }
+            });
 
           if (elementIsNotIncluded) return cur;
         });
-
-        console.log(allJobs);
-
-       
 
         this.setState({
           jobs: allJobs,
@@ -116,22 +112,42 @@ export default class App extends Component {
     }
   }
 
-  handleFilter(value) {
-    let filteredJobs = this.state.jobs.filter(cur => {
+  handleFilter = (value) => {
+    let fullMatch = value.split(" ").join("").toLowerCase();
+    let partialMatch = value.trim().split(" ");
 
-      let elementIsNotIncluded = false;
+    const remaining = [];
 
-      cur.position.toLowerCase().split(" ").forEach((el) => {
-        if (value.includes(el)) {
-          elementIsNotIncluded = true;
+    const result = this.state.jobs.filter((job) => {
+      let pos = job.position.split(" ").join("").toLowerCase();
+
+      if (pos.includes(fullMatch) || pos.includes()) {
+        return job;
+      } else {
+        remaining.push(job);
+      }
+    });
+
+    console.log(result);
+
+    remaining.forEach((job) => {
+      let shouldSkip = false;
+      let pos = job.position.split(" ").join("").toLowerCase();
+
+      partialMatch.forEach((el) => {
+        if (shouldSkip) {
+          return;
+        }
+        if (pos.includes(el)) {
+          result.push(job);
+          shouldSkip = true;
+          return;
         }
       });
+    });
 
-      if (elementIsNotIncluded) return cur;
-    })
-
-    console.log(filteredJobs)
-  }
+    console.log(result);
+  };
 
   render() {
     return (
@@ -141,7 +157,12 @@ export default class App extends Component {
           <Route
             exact
             path="/"
-            component={() => <SearchPage jobs={this.state.filteredJobs} filterJob={this.handleFilter} />}
+            component={() => (
+              <SearchPage
+                jobs={this.state.filteredJobs}
+                filterJob={this.handleFilter}
+              />
+            )}
           />
           <Route exact path="/description/:id" component={Description} />
           <Route component={notFound} />

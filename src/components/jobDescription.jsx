@@ -4,12 +4,6 @@ import { AiOutlineClockCircle, BiWorld } from "react-icons/all";
 
 export default function JobDescription({data}) {
 
-
-  function createMarkup(data) {
-    return {__html: data.description};
-  }
-
-
   return (
     <div className="flex-1 md:ml-8 border-gray-800 border">
       <div className="flex items-center">

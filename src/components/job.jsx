@@ -1,7 +1,5 @@
-import { withRouter } from "react-router";
-
 function Job({data,handleClick}) {
-  let {name,logo,position,location,date,description} = data
+  let {name,logo,position,location,date} = data
   date = date.split('T')[0];
   return (
     <div onClick={handleClick} className="flex p-4 mb-4 rounded bg-white shadow-2xl">
