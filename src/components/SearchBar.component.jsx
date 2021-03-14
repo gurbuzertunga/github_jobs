@@ -7,8 +7,8 @@ import React, { Component } from 'react'
 class SearchBar extends Component {
   state = {inputText: ''};
 
-  clickHandler = (e) => {
-    console.log(this.state.inputText);
+  clickHandler = () => {
+    this.props.filterJob(this.state.inputText);
   }
 
   changeHandler = (e) => {

@@ -104,20 +104,7 @@ export default class App extends Component {
 
         console.log(allJobs);
 
-        let filteredJobs = allJobs.filter(cur => {
-
-          elementIsNotIncluded = false;
-
-          cur.position.toLowerCase().split(" ").forEach((el) => {
-            if (positions.includes(el)) {
-              elementIsNotIncluded = true;
-            }
-          });
-
-          if (elementIsNotIncluded) return cur;
-        })
-
-        console.log(filteredJobs)
+       
 
         this.setState({
           jobs: allJobs,
@@ -129,6 +116,23 @@ export default class App extends Component {
     }
   }
 
+  handleFilter(value) {
+    let filteredJobs = this.state.jobs.filter(cur => {
+
+      let elementIsNotIncluded = false;
+
+      cur.position.toLowerCase().split(" ").forEach((el) => {
+        if (value.includes(el)) {
+          elementIsNotIncluded = true;
+        }
+      });
+
+      if (elementIsNotIncluded) return cur;
+    })
+
+    console.log(filteredJobs)
+  }
+
   render() {
     return (
       <div className="px-24">
@@ -137,7 +141,7 @@ export default class App extends Component {
           <Route
             exact
             path="/"
-            component={() => <SearchPage jobs={this.state.filteredJobs} />}
+            component={() => <SearchPage jobs={this.state.filteredJobs} filterJob={this.handleFilter} />}
           />
           <Route exact path="/description/:id" component={Description} />
           <Route component={notFound} />
