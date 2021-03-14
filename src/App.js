@@ -81,10 +81,15 @@ export default class App extends Component {
           "Mobile Developer",
           "Content Writer",
         ].map((el) => el.toLowerCase());
+        
+        const positions = [
+          "react",
+          "fullstack",
+        ].map((el) => el.toLocaleLowerCase());
 
         let elementIsNotIncluded = true;
 
-        let d = jobPosts.filter(cur => {
+        let allJobs = jobPosts.filter(cur => {
 
           elementIsNotIncluded = true;
 
@@ -97,10 +102,26 @@ export default class App extends Component {
           if (elementIsNotIncluded) return cur;
         });
 
-        console.log(d);
+        console.log(allJobs);
+
+        let filteredJobs = allJobs.filter(cur => {
+
+          elementIsNotIncluded = false;
+
+          cur.position.toLowerCase().split(" ").forEach((el) => {
+            if (positions.includes(el)) {
+              elementIsNotIncluded = true;
+            }
+          });
+
+          if (elementIsNotIncluded) return cur;
+        })
+
+        console.log(filteredJobs)
 
         this.setState({
-          jobs: d,
+          jobs: allJobs,
+          filteredJobs: allJobs,
         });
       });
     } catch (error) {
@@ -116,7 +137,7 @@ export default class App extends Component {
           <Route
             exact
             path="/"
-            component={() => <SearchPage jobs={this.state.jobs} />}
+            component={() => <SearchPage jobs={this.state.filteredJobs} />}
           />
           <Route exact path="/description/:id" component={Description} />
           <Route component={notFound} />
