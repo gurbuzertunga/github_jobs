@@ -3,32 +3,35 @@ import { AiOutlineClockCircle, BiWorld } from "react-icons/all";
 // import Job from "../components/job";
 
 export default function JobDescription({data}) {
-
+  let {name,logo,position,location,date, description} = data
+  date = date.split('T')[0];
   return (
-    <div className="flex-1 md:ml-8 border-gray-800 border">
-      <div className="flex items-center">
+    <div className="flex-1 md:ml-8 bg-white p-4 rounded">
+      <div className="flex justify-between items-center">
         <h1 className="text-indigo-900 mr-4  text-xl font-bold">
-          {data.position}
+          {position}
         </h1>
-        
-      </div>
-      <div className='flex items-center ml-2 text-gray-500'>
+        <div className='flex items-center ml-2 text-gray-500'>
         <AiOutlineClockCircle />
-        <p className="ml-2">{data.date}</p>
+        <p className="ml-2 underline">{date}</p>
       </div>
+      </div>
+      
       <div>
         <img
-          src={data.logo}
+          src={logo}
           alt="logo"
-          className="rounded w-12"
+          className="rounded w-24"
         />
         <div>
-          <h2 className="font-roboto text-xs font-bold">{data.name}</h2>
+          <h2 className="font-roboto text-sm font-bold">{name}</h2>
+          <div className="flex py-4">
           <BiWorld />
-          <p>{data.location}</p>
+          <p className="mx-4 align-top">{location}</p>
+          </div>
         </div>
       </div>
-      <div dangerouslySetInnerHTML={{__html: data.description}}></div>
+      <div dangerouslySetInnerHTML={{__html: description}}></div>
     </div>
   );
 }
