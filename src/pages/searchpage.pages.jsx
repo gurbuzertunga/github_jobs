@@ -5,7 +5,7 @@ import Sidebar from "../components/sidebar";
 import Loader from "../components/loader";
 
 const SearchPage = ({ jobs, filterJob }) => {
-  console.log(jobs);
+  
   return (
     <>
       <SearchBar filterJob={filterJob} />
