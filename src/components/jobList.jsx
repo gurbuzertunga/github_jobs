@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Job from "./job";
 import { withRouter } from "react-router-dom";
 import ReactPaginate from "react-paginate";
-// import Pagination from "./pagination";
 
 class JobList extends Component {
   state = {
@@ -27,13 +26,14 @@ class JobList extends Component {
         offset: offset,
       },
       () => {
+        window.scrollTo(0, 0);
         this.receivedData();
       }
     );
   };
 
   receivedData = () => {
-    const jobs = this.props.jobs
+    const jobs = this.props.jobs;
     const postData =
       jobs &&
       jobs
@@ -43,12 +43,12 @@ class JobList extends Component {
         });
     this.setState({
       data: postData,
-      pageCount: Math.ceil(jobs.length / this.state.perPage)
+      pageCount: Math.ceil(jobs.length / this.state.perPage),
     });
   };
 
   componentDidMount() {
-    this.receivedData()
+    this.receivedData();
   }
 
   render() {
