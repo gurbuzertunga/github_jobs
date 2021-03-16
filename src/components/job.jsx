@@ -2,11 +2,11 @@ function Job({data,handleClick}) {
   let {name,logo,position,location,date} = data
   date = date.split('T')[0];
   return (
-    <div onClick={handleClick} className="flex p-4 mb-4 rounded bg-white shadow-2xl">
+    <div onClick={handleClick} className="flex p-4 mb-4 rounded bg-white hover:bg-gray-600 shadow-2xl">
       <div className="w-2/12 mr-4">
         <img src={logo} alt="logo" className="rounded" />
       </div>
-      <div className="flex flex-col text-blue-800 w-full">
+      <div className="flex flex-col text-blue-800 hover:text-white w-full">
         <p className="font-roboto text-xs font-bold">{name}</p>
         <p>{position}</p>
         <div className="flex justify-between items-end">
