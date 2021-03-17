@@ -29,10 +29,6 @@ export default function Sidebar({ page, url }) {
             <label htmlFor="full">Full time</label>
           </div>
           <h3 className="text-lg text-gray-400 font-bold pb-2">Path</h3>
-          <Input
-            icon={<GrStackOverflow />}
-            placeholder="City,state zip code or country"
-          />
           <div className="flex flex-col pl-2">
             <div className="py-2">
               <input
