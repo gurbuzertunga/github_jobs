@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Input from "../ui-kits/Input";
 import { BiWorld, IoReturnDownBackOutline } from "react-icons/all";
 
-export default function Sidebar({ page, url }) {
+export default function Sidebar({ page, url,showAllJobs }) {
   return (
     <>
       {page === "descriptionPage" && (
@@ -20,13 +20,7 @@ export default function Sidebar({ page, url }) {
       {page === "searchPage" && (
         <aside className="md:w-1/3 mb-4">
           <div className="pl-2 mb-4">
-            <input
-              type="checkbox"
-              name="Full time"
-              id="full"
-              className="pl-2 mr-2 w-4 h-4"
-            />
-            <label htmlFor="full">Full time</label>
+           <p onClick={showAllJobs} className='font-bold cursor-pointer hover:text-blue-500'>See All Job postings</p>
           </div>
           <h3 className="text-lg text-gray-400 font-bold pb-2">Location</h3>
           <Input

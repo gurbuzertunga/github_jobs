@@ -71,7 +71,6 @@ export default class App extends Component {
         );
 
         const jobPosts = [...result[0], ...result[1]];
-
         const noShowList = [
           "ios",
           "android",
@@ -145,6 +144,13 @@ export default class App extends Component {
     });
     this.setState({
       filteredJobs: result,
+    });
+
+  };
+
+  showAllJobs = () => {
+    this.setState({
+      filteredJobs:this.state.jobs
     })
   };
 
@@ -160,6 +166,7 @@ export default class App extends Component {
               <SearchPage
                 jobs={this.state.filteredJobs}
                 filterJob={this.handleFilter}
+                showAllJobs={this.showAllJobs}
               />
             )}
           />
