@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Input from "../ui-kits/Input";
 import { GrStackOverflow, IoReturnDownBackOutline } from "react-icons/all";
 
-export default function Sidebar({ page, url,showAllJobs }) {
+export default function Sidebar({ page, url,showAllJobs, showJobPath }) {
   return (
     <>
       {page === "descriptionPage" && (
@@ -20,39 +20,18 @@ export default function Sidebar({ page, url,showAllJobs }) {
       {page === "searchPage" && (
         <aside className="md:w-1/3 mb-4">
           <div className="pl-2 mb-4">
-           <p onClick={showAllJobs} className='font-bold cursor-pointer hover:text-blue-500'>See All Job postings</p>
+           <p onClick={showAllJobs} className='cursor-pointer font-extrabold hover:text-blue-500'>See All Job postings</p>
           </div>
-          <h3 className="text-lg text-gray-400 font-bold pb-2">Path</h3>
+          <h3 className="text-lg text-gray-700 font-bold pb-2">Path</h3>
           <div className="flex flex-col pl-2">
             <div className="py-2">
-              <input
-                className="mr-2 w-4 h-4"
-                type="radio"
-                value="fullstack"
-                name="country"
-                id="fullstack"
-              />
-              <label htmlFor="fullstack">Full Stack Developer</label>
+             <p className="cursor-pointer text-blue-600 font-medium" onClick={() => showJobPath('Full Stack Developer')}>Full Stack Developer</p>
             </div>
             <div className="py-2">
-              <input
-                className="mr-2 w-4 h-4"
-                type="radio"
-                value="frontend"
-                name="country"
-                id="frontend"
-              />
-              <label htmlFor="frontend">Front End Developer</label>
+              <p className="cursor-pointer text-blue-600 font-medium" onClick={() => showJobPath('Front End Developer')}>Front End Developer</p>
             </div>
             <div className="py-2">
-              <input
-                className="mr-2 w-4 h-4"
-                type="radio"
-                value="backend"
-                name="country"
-                id="backend"
-              />
-              <label htmlFor="backend">Back End Developer</label>
+             <p tabIndex="0" className="cursor-pointer text-blue-600 font-medium"  onClick={() => showJobPath('Back End Developer')}>Back End Developer</p>
             </div>
           </div>
         </aside>

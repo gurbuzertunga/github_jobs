@@ -11,6 +11,7 @@ export default class App extends Component {
   state = {
     jobs: [],
     filteredJobs: [],
+    path: null,
   };
 
   componentDidMount() {
@@ -144,20 +145,38 @@ export default class App extends Component {
     });
     this.setState({
       filteredJobs: result,
+      path: value
     });
 
   };
 
   showAllJobs = () => {
     this.setState({
-      filteredJobs:this.state.jobs
+      filteredJobs:this.state.jobs,
+      path: null,
     })
   };
 
+  showJobPath = (path) => {
+    let fullMatch = path.split(" ").join("").toLowerCase();
+    const result = this.state.jobs.filter((job) => {
+      let pos = job.position.split(" ").join("").toLowerCase();
+
+      if (pos.includes(fullMatch)) {
+        return job;
+      }; 
+    });
+    this.setState({
+      filteredJobs: result,
+      path: path,
+    });
+  }
+
   render() {
     return (
-      <div className="px-24">
-        <NavLogo />
+      <div >
+        <div className="px-24">
+        <NavLogo showAllJobs={this.showAllJobs} />
         <Switch>
           <Route
             exact
@@ -167,12 +186,15 @@ export default class App extends Component {
                 jobs={this.state.filteredJobs}
                 filterJob={this.handleFilter}
                 showAllJobs={this.showAllJobs}
+                showJobPath={this.showJobPath}
+                path={this.state.path}
               />
             )}
           />
           <Route exact path="/description/:id" component={Description} />
           <Route component={notFound} />
         </Switch>
+        </div>
         <FooterLogo />
       </div>
     );

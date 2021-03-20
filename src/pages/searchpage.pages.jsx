@@ -4,14 +4,14 @@ import Sidebar from "../components/sidebar";
 
 import Loader from "../components/loader";
 
-const SearchPage = ({ jobs, filterJob,showAllJobs }) => {
+const SearchPage = ({ jobs, filterJob,showAllJobs, showJobPath, path }) => {
   
   return (
     <>
       <SearchBar filterJob={filterJob} />
       <div className="flex flex-col md:flex-row">
-        <Sidebar page="searchPage" showAllJobs={showAllJobs} />
-        {jobs.length ? <JobList jobs={jobs} /> : <Loader />}
+        <Sidebar page="searchPage" showAllJobs={showAllJobs} showJobPath={showJobPath} />
+        {jobs.length ? <JobList jobs={jobs} path={path}/> : <Loader />}
       </div>
     </>
   );

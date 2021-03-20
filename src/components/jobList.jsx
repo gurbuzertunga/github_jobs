@@ -53,10 +53,12 @@ class JobList extends Component {
 
   render() {
     const { data } = this.state;
-
+    const { path } = this.props;
     return (
       <div className="flex flex-col flex-1">
         <div className="flex-1 md:ml-8">
+          {path && <p className="p-4 my-2 bg-gray-200 text-blue-500">Showing {path} Results...</p>}
+          
           {data &&
             data.map((job, i) => (
               <Job
