@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Input from "../ui-kits/Input";
-import { BiWorld, IoReturnDownBackOutline } from "react-icons/all";
+import { GrStackOverflow, IoReturnDownBackOutline } from "react-icons/all";
 
 export default function Sidebar({ page, url,showAllJobs }) {
   return (
@@ -22,51 +22,37 @@ export default function Sidebar({ page, url,showAllJobs }) {
           <div className="pl-2 mb-4">
            <p onClick={showAllJobs} className='font-bold cursor-pointer hover:text-blue-500'>See All Job postings</p>
           </div>
-          <h3 className="text-lg text-gray-400 font-bold pb-2">Location</h3>
-          <Input
-            icon={<BiWorld />}
-            placeholder="City,state zip code or country"
-          />
+          <h3 className="text-lg text-gray-400 font-bold pb-2">Path</h3>
           <div className="flex flex-col pl-2">
             <div className="py-2">
               <input
                 className="mr-2 w-4 h-4"
                 type="radio"
-                value="london"
+                value="fullstack"
                 name="country"
-                id="london"
+                id="fullstack"
               />
-              <label htmlFor="london">London</label>
+              <label htmlFor="fullstack">Full Stack Developer</label>
             </div>
             <div className="py-2">
               <input
                 className="mr-2 w-4 h-4"
                 type="radio"
-                value="amsterdam"
+                value="frontend"
                 name="country"
-                id="amsterdam"
+                id="frontend"
               />
-              <label htmlFor="amsterdam">Amsterdam</label>
+              <label htmlFor="frontend">Front End Developer</label>
             </div>
             <div className="py-2">
               <input
                 className="mr-2 w-4 h-4"
                 type="radio"
-                value="newyork"
+                value="backend"
                 name="country"
-                id="newyork"
+                id="backend"
               />
-              <label htmlFor="newyork">New York</label>
-            </div>
-            <div className="py-2">
-              <input
-                className="mr-2 w-4 h-4"
-                type="radio"
-                value="berlin"
-                name="country"
-                id="berlin"
-              />
-              <label htmlFor="berlin">Berlin</label>
+              <label htmlFor="backend">Back End Developer</label>
             </div>
           </div>
         </aside>
