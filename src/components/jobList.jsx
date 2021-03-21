@@ -13,7 +13,6 @@ class JobList extends Component {
 
   handleClick = (e, job) => {
     this.props.history.push(`description/${e}`, job);
-    this.props.history.location.state.currentPage = this.state.currentPage;
   };
 
   handlePageClick = (e) => {
@@ -47,17 +46,21 @@ class JobList extends Component {
     });
   };
 
-  componentDidMount() {
-    let currentPage = 1;
-    this.props.history.location.state ?
+  componentWillMount() {
+    console.log('aaaaaaaaaaa');
+    const currentPage = JSON.parse(localStorage.getItem('currentPage'))
+    console.log(currentPage);
     this.setState({
-      currentPage: this.props.history.location.state.currentPage
-    }):
-    this.setState({
-      currentPage: currentPage
+      currentPage:currentPage
     })
-    this.receivedData();
+  }
 
+  componentDidMount() {
+    this.receivedData();
+  }
+
+  componentWillUnmount() {
+    localStorage.setItem('currentPage', JSON.stringify(this.state.currentPage))
   }
 
   render() {
