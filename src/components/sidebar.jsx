@@ -1,20 +1,20 @@
-import { Link } from "react-router-dom";
-import Input from "../ui-kits/Input";
-import { GrStackOverflow, IoReturnDownBackOutline } from "react-icons/all";
+import { Link, withRouter } from "react-router-dom";
+import { IoReturnDownBackOutline } from "react-icons/all";
 
-export default function Sidebar({ page, url,showAllJobs, showJobPath }) {
+function Sidebar({ page, url,showAllJobs, showJobPath, history }) {
+  let currentPage = history.location.state.currentPage;
   return (
     <>
       {page === "descriptionPage" && (
         <aside className="md:w-1/3 mb-4">
-          <div className="flex pb-4 items-center">
+          <div className="flex pb-4 items-center mb-12">
             <IoReturnDownBackOutline />
-            <Link to="/" className="mx-4">Back to search page</Link>
+            <Link to="/" className="mx-4" onClick={
+              history.location.state.currentPage = currentPage
+              }>Back to search page</Link>
           </div>
-          <h3 className="my-4 text-xl font-bold text-blue-800">How to apply</h3>
-          <p className="">
-            To apply to this position click on this <a href={url} target="blank" className="font-bold text-blue-800">here</a>
-          </p>
+          
+          <a href={url} target="_blank" className="px-6 py-3 text-white bg-blue-600 rounded-md font-bold">Apply to This Position</a>
         </aside>
       )}
       {page === "searchPage" && (
@@ -39,3 +39,6 @@ export default function Sidebar({ page, url,showAllJobs, showJobPath }) {
     </>
   );
 }
+
+
+export default withRouter(Sidebar);

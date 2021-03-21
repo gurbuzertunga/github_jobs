@@ -1,12 +1,16 @@
 import React from "react";
 import { AiOutlineClockCircle, BiWorld } from "react-icons/all";
 // import Job from "../components/job";
+import showdown from 'showdown';
 
 export default function JobDescription({data}) {
   let {name,logo,position,location,date, description} = data
   date = date.split('T')[0];
+
+  let converter = new showdown.Converter();
+  description = converter.makeHtml(description);
   return (
-    <div className="flex-1 md:ml-8 bg-white p-4 rounded">
+    <div className="flex-1 md:ml-8 bg-white p-6 rounded">
       <div className="flex justify-between items-center">
         <h1 className="text-indigo-900 mr-4  text-xl font-bold">
           {position}
@@ -31,7 +35,7 @@ export default function JobDescription({data}) {
           </div>
         </div>
       </div>
-      <div dangerouslySetInnerHTML={{__html: description}}></div>
+      <div id="description" dangerouslySetInnerHTML={{__html: description}}></div>
     </div>
   );
 }

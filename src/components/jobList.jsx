@@ -8,15 +8,15 @@ class JobList extends Component {
     offset: 0,
     data: [],
     perPage: 20,
-    currentPage: 0,
+    currentPage: 1,
   };
 
   handleClick = (e, job) => {
     this.props.history.push(`description/${e}`, job);
+    this.props.history.location.state.currentPage = this.state.currentPage;
   };
 
   handlePageClick = (e) => {
-    console.log(e.selected);
     const selectedPage = e.selected;
     const offset = selectedPage * this.state.perPage;
 
@@ -48,7 +48,16 @@ class JobList extends Component {
   };
 
   componentDidMount() {
+    let currentPage = 1;
+    this.props.history.location.state ?
+    this.setState({
+      currentPage: this.props.history.location.state.currentPage
+    }):
+    this.setState({
+      currentPage: currentPage
+    })
     this.receivedData();
+
   }
 
   render() {
