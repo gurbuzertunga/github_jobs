@@ -6,13 +6,13 @@ function Sidebar({ page, url,showAllJobs, showJobPath, history }) {
   return (
     <>
       {page === "descriptionPage" && (
-        <aside className="md:w-1/3 mb-4">
+        <aside className="md:w-1/3 mb-4 flex md:block justify-center">
           <div className="flex pb-4 items-center mb-12">
             <IoReturnDownBackOutline />
             <Link to="/" className="mx-4">Back to search page</Link>
           </div>
           
-          <a href={url} target="_blank" className="px-6 py-3 text-white bg-blue-600 rounded-md font-bold">Apply to This Position</a>
+          <a href={url} target="_blank" className="mx-auto px-6 py-3 text-white bg-blue-600 rounded-md font-bold">Apply to This Position</a>
         </aside>
       )}
       {page === "searchPage" && (

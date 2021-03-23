@@ -32,11 +32,13 @@ class JobList extends Component {
   };
 
   receivedData = () => {
+    console.log(window.innerWidth);
+    let perPage = window.innerWidth < 640 ? 200 : this.state.perPage;
     const jobs = this.props.jobs;
     const postData =
       jobs &&
       jobs
-        .slice(this.state.offset, this.state.offset + this.state.perPage)
+        .slice(this.state.offset, this.state.offset + perPage )
         .map((element, i) => {
           return element;
         });
@@ -47,12 +49,12 @@ class JobList extends Component {
   };
 
   componentWillMount() {
-    console.log('aaaaaaaaaaa');
-    const currentPage = JSON.parse(localStorage.getItem('currentPage'))
+    console.log("aaaaaaaaaaa");
+    const currentPage = JSON.parse(localStorage.getItem("currentPage"));
     console.log(currentPage);
     this.setState({
-      currentPage:currentPage
-    })
+      currentPage: currentPage,
+    });
   }
 
   componentDidMount() {
@@ -60,7 +62,7 @@ class JobList extends Component {
   }
 
   componentWillUnmount() {
-    localStorage.setItem('currentPage', JSON.stringify(this.state.currentPage))
+    localStorage.setItem("currentPage", JSON.stringify(this.state.currentPage));
   }
 
   render() {
@@ -69,8 +71,12 @@ class JobList extends Component {
     return (
       <div className="flex flex-col flex-1">
         <div className="flex-1 md:ml-8">
-          {path && <p className="p-4 my-2 bg-gray-200 text-blue-500">Showing {path} Results...</p>}
-          
+          {path && (
+            <p className="p-4 my-2 bg-gray-200 text-blue-500">
+              Showing {path} Results...
+            </p>
+          )}
+
           {data &&
             data.map((job, i) => (
               <Job
@@ -82,19 +88,19 @@ class JobList extends Component {
             ))}
         </div>
         <div className="md:block hidden">
-        <ReactPaginate
-          previousLabel={"prev"}
-          nextLabel={"next"}
-          breakLabel={"..."}
-          breakClassName={"break-me"}
-          pageCount={this.state.pageCount}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
-          onPageChange={this.handlePageClick}
-          containerClassName={"pagination"}
-          subContainerClassName={"pages pagination"}
-          activeClassName={"active"}
-        />
+          <ReactPaginate
+            previousLabel={"prev"}
+            nextLabel={"next"}
+            breakLabel={"..."}
+            breakClassName={"break-me"}
+            pageCount={this.state.pageCount}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={this.handlePageClick}
+            containerClassName={"pagination"}
+            subContainerClassName={"pages pagination"}
+            activeClassName={"active"}
+          />
         </div>
       </div>
     );
