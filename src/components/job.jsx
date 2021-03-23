@@ -9,7 +9,7 @@ function Job({data,handleClick}) {
       <div className="flex flex-col text-blue-800  w-full">
         <p className="font-roboto text-xs font-bold">{name}</p>
         <p>{position}</p>
-        <div className="flex justify-between items-end">
+        <div className="hidden md:flex justify-between items-end">
           <button className="border rounded border-blue-800 p-2 line">Full Time</button>
           <div className="flex justify-around">
             <p className='mr-2 font-bold'>{location}</p>
