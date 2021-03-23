@@ -12,7 +12,7 @@ function Sidebar({ page, url,showAllJobs, showJobPath, history }) {
             <Link to="/" className="mx-4">Back to search page</Link>
           </div>
           
-          <a href={url} target="_blank" className="mx-auto px-6 py-3 text-white bg-blue-600 rounded-md font-bold">Apply to This Position</a>
+          <a href={url} target="_blank" rel='noreferrer' className="mx-auto px-6 py-3 text-white bg-blue-600 rounded-md font-bold">Apply to This Position</a>
         </aside>
       )}
       {page === "searchPage" && (
