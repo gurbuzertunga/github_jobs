@@ -81,6 +81,7 @@ class JobList extends Component {
               />
             ))}
         </div>
+        <div className="md:block hidden">
         <ReactPaginate
           previousLabel={"prev"}
           nextLabel={"next"}
@@ -94,6 +95,7 @@ class JobList extends Component {
           subContainerClassName={"pages pagination"}
           activeClassName={"active"}
         />
+        </div>
       </div>
     );
   }

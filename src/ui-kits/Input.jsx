@@ -11,7 +11,7 @@ export default function Input({ icon, isButton, placeholder, changeHandler, clic
         onChange={changeHandler}
       />
       {isButton && (
-        <button className="text-white bg-blue-700 py-2 px-12 absolute right-0 mr-2 rounded">
+        <button className="text-white bg-blue-700 py-2 md:px-12 px-4 absolute right-0 mr-2 rounded">
           Search
         </button>
       )}

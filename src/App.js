@@ -175,7 +175,7 @@ export default class App extends Component {
   render() {
     return (
       <div >
-        <div className="px-24">
+        <div className="md:px-24 px-4">
         <NavLogo showAllJobs={this.showAllJobs} />
         <Switch>
           <Route
