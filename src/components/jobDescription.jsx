@@ -11,13 +11,13 @@ export default function JobDescription({data}) {
   description = converter.makeHtml(description);
   return (
     <div className="flex-1 md:ml-8 bg-white p-6 rounded">
-      <div className="flex justify-between items-center">
-        <h1 className="text-indigo-900 mr-4  text-xl font-bold">
+      <div className="flex justify-between items-end md:items-center flex-col md:flex">
+        <h1 className="text-indigo-900 md:mr-4 text-md md:text-2xl md:mb-4 font-bold">
           {position}
         </h1>
         <div className='flex items-center ml-2 text-gray-500'>
         <AiOutlineClockCircle />
-        <p className="ml-2 underline">{date}</p>
+        <p className="ml-2 underline w-max">{date}</p>
       </div>
       </div>
       
@@ -25,7 +25,7 @@ export default function JobDescription({data}) {
         <img
           src={logo}
           alt="logo"
-          className="rounded w-24"
+          className="rounded md:w-48 md:mb-4 w-full my-4 md:my-0"
         />
         <div>
           <h2 className="font-roboto text-sm font-bold">{name}</h2>

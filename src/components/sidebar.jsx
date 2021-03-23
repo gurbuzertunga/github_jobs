@@ -6,7 +6,7 @@ function Sidebar({ page, url,showAllJobs, showJobPath, history }) {
   return (
     <>
       {page === "descriptionPage" && (
-        <aside className="md:w-1/3 mb-4 flex md:block justify-center">
+        <aside className="md:w-1/3 mb-4 flex flex-col md:block justify-center">
           <div className="flex pb-4 items-center mb-12">
             <IoReturnDownBackOutline />
             <Link to="/" className="mx-4">Back to search page</Link>

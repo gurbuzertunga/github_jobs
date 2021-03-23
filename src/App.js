@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { Component } from "react";
 import NavLogo from "./components/header.component";
 import FooterLogo from "./components/footer.component";
