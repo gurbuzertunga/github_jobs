@@ -28,9 +28,19 @@ export default class App extends Component {
       const promise2 = await axios.get(
         "https://limitless-harbor-63035.herokuapp.com/https://jobs.github.com/positions.json?search=node"
       );
-      Promise.all([promise1, promise2]).then((values) => {
+
+      const promise3 = await axios.get(
+        "https://limitless-harbor-63035.herokuapp.com/https://remotive.io/api/remote-jobs?category=software-dev"
+      );
+      Promise.all([promise1, promise2, promise3]).then((values) => {
         values.forEach((value) => {
-          dataToSubmit.push(value.data);
+          console.log(value);
+          if (Array.isArray(value.data)) {
+            dataToSubmit.push(value.data);
+          } else {
+            dataToSubmit.push(value.data.jobs)
+          }
+          console.log(dataToSubmit);
         });
 
         const result = [];
@@ -72,7 +82,25 @@ export default class App extends Component {
             .filter((el) => el.position)
         );
 
-        const jobPosts = [...result[0], ...result[1]];
+        result.push(
+          dataToSubmit[2]
+            .map((el) => {
+              return {
+                name: el.company_name || "Job Opportunity",
+                position: el.title,
+                logo:
+                  el.company_logo ||
+                  "https://www.logodesign.net/logo/abstract-cuboid-building-4519ld.png",
+                date: el.publication_date,
+                description:
+                  el.description || `This company hasn't provided description`,
+                location: el.candidate_required_location || "Remote",
+                url: el.url,
+              };
+            })
+        );
+
+        const jobPosts = [...result[0], ...result[1],...result[2]];
         const noShowList = [
           "ios",
           "android",
@@ -144,6 +172,7 @@ export default class App extends Component {
         }
       });
     });
+
     this.setState({
       filteredJobs: result,
       path: value
@@ -201,3 +230,12 @@ export default class App extends Component {
     );
   }
 }
+
+// Full stack
+
+// Full-stack
+
+// Fullstack
+
+// fullstack
+
