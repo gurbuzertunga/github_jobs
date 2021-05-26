@@ -5,7 +5,7 @@ import Input from "../ui-kits/Input";
 import React, { Component } from 'react'
 
 class SearchBar extends Component {
-  state = {inputText: ''};
+  state = { inputText: '' };
 
   clickHandler = () => {
     this.props.filterJob(this.state.inputText);
@@ -16,17 +16,15 @@ class SearchBar extends Component {
       inputText: e.target.value,
     })
   }
-  
+
   render() {
     return (
-      <>
       <div className="searchbar-img w-full relative h-36 md:px-24 px-4 mb-12 flex justify-center items-center rounded">
-        <Input changeHandler={this.changeHandler} clickHandler={this.clickHandler} isButton icon={<BsBriefcase />} placeholder='Search...' /> 
+        <Input changeHandler={this.changeHandler} clickHandler={this.clickHandler} isButton icon={<BsBriefcase />} placeholder='Search...' />
+        {/* <div className="bg-red-600 w-60 absolute top-28 left-24">
+          <p className="py-4">Suggestions</p>
+        </div> */}
       </div>
-      <div className="bg-red-600 w-12 h-12">
-
-      </div>
-      </>
     )
   }
 }
